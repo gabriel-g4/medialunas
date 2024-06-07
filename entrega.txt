@@ -1,0 +1,9 @@
+Aplicacion Medialunas
+
+Funcionalidades:
+
+Agregar informacion
+  Editar y eliminar
+
+Leer informacion
+  Filtrar
