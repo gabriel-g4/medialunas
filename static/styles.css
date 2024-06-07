@@ -1,4 +1,16 @@
 body 
 {
-    background-color: #ffffcc;
+    background-color: #ffffcc !important;
+    text-align: center !important;
+}
+
+.button-container
+{
+    margin-top:5vh;
+    margin-bottom:5vh;
+}
+
+main
+{
+    margin:10vh;
 }
