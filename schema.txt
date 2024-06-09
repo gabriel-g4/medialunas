@@ -1,0 +1,43 @@
+
+CREATE TABLE medialunas (
+	id INTEGER,
+	dia INTEGER,
+	mes INTEGER,
+	año INTEGER,
+	tipo ()
+	cantidad INTEGER,
+	tiempo_descanso REAL,
+	tiempo_coccion REAL,
+	costo_c_una REAL,
+	cantidad_vendida INTEGER,
+	precio_c_una REAL,
+	ganancia REAL,
+	PRIMARY KEY(id)
+)
+
+CREATE TABLE ingredientes (
+	id INTEGER NOT NULL,
+	harina INTEGER,
+	levadura INTEGER,
+	azucar INTEGER,
+	miel INTEGER,
+	sal INTEGER,
+	leche INTEGER,
+	huevos INTEGER,
+	manteca INTEGER,
+	FOREIGN KEY(id) REFERENCES medialunas(id)
+)
+
+CREATE TABLE precios (
+	id INTEGER NOT NULL,
+	harina REAL,
+	levadura REAL,
+	azucar REAL,
+	miel REAL,
+	sal REAL,
+	leche REAL,
+	huevos REAL,
+	manteca REAL,
+	FOREIGN KEY(id) REFERENCES medialunas(id)
+)
+	

@@ -4,6 +4,7 @@ Funcionalidades:
 
 Agregar informacion
   Editar y eliminar
+  Crear log de cada entrega
 
 Leer informacion
   Filtrar
