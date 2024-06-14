@@ -1,10 +1,25 @@
-Aplicacion Medialunas
+Aplicación Medialunas
 
-Funcionalidades:
+### Funcionalidades:
 
-Agregar informacion
-  Editar y eliminar
-  Crear log de cada entrega
+* Manejo información en base de datos:
+	-Agregar 
+	-Editar
+	-Eliminar
+	-Crear log de cada entrega (en archivo)
 
-Leer informacion
-  Filtrar
+* Leer información: Ruta -> /
+	-Filtros
+	-Buscador por columna.
+
+## Tareas
+
+- Conectar base de datos.
+- Crear tabla en html.
+
+// Ideas y posibles caminos
+
+en /, mostrar la tabla directamente con dos botones: Agregar y Eliminar
+				     |_ un botón: Editar en donde se pueda Agregar, Eliminar y Editar
+
+en /, mostrar 3 botones, solo con el botón Mostrar se vería la tabla y buscador.
