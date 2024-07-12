@@ -1,7 +1,6 @@
 Aplicación Medialunas
 
 
-
 ### Funcionalidades:
 
 * Manejo información en base de datos:
@@ -17,7 +16,21 @@ Aplicación Medialunas
 
 ## Tareas
 
-- Crear tabla en html.
+# Funcionales
+
+Barra de busqueda
+Stock semanal
+Apartado freezer, en donde cargar stock, sacarlo y ver su fecha limite.
+
+# Base de datos
+
+Masa madre - tipo de dato texto
+
+# Esteticas
+
+Apartado - ¿Que son las medialunas? para el final
+
+
 
 // Ideas y posibles caminos
 
@@ -26,6 +39,3 @@ en /, mostrar la tabla directamente con dos botones: Agregar y Eliminar
 
 en /, mostrar 3 botones, solo con el botón Mostrar se vería la tabla y buscador.
 
-### Estética
-
-Apartado - ¿Que son las medialunas?
