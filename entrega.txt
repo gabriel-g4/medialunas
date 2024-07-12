@@ -1,5 +1,7 @@
 Aplicación Medialunas
 
+
+
 ### Funcionalidades:
 
 * Manejo información en base de datos:
@@ -9,6 +11,7 @@ Aplicación Medialunas
 	-Crear log de cada entrega (en archivo)
 
 * Leer información: Ruta -> /
+	-Leer
 	-Filtros
 	-Buscador por columna.
 
@@ -22,3 +25,7 @@ en /, mostrar la tabla directamente con dos botones: Agregar y Eliminar
 				     |_ un botón: Editar en donde se pueda Agregar, Eliminar y Editar
 
 en /, mostrar 3 botones, solo con el botón Mostrar se vería la tabla y buscador.
+
+### Estética
+
+Apartado - ¿Que son las medialunas?
