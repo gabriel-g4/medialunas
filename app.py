@@ -3,17 +3,19 @@ import sqlite3
 
 app = Flask(__name__)
 database = "medialunas.db"
-
-# with sqlite3.connect(database) as connection:
-#     connection.execute("INSERT INTO medialunas (dia, mes, anio, cantidad, tipo)\
-#                         VALUES (?, ?, ?, ?, ?)", (13, 6, 2024, 12, "practica"))
-
-# with sqlite3.connect(database) as connection:
-#     connection.execute(".schema")
+COLUMNAS_MEDIALUNAS = ["id", "cantidad", "tiempo_descanso", "tiempo_coccion", "costo_c_una"\
+                       , "cantidad_vendida", "precio_c_una", "ganancia", "tipo", "masa_madre"\
+                        , "fecha"]
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    with sqlite3.connect(database) as connection:
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM medialunas")
+        data = cursor.fetchall()
+    print(data)
+    return render_template("index.html", medialunas=data\
+                           , columnas_medialunas=COLUMNAS_MEDIALUNAS)
 
 if __name__ == "__main__":
     app.run()
