@@ -7,7 +7,7 @@
 {% block main %}
 <div class="container table-responsive-sm">
     <table class="table table-sm table-hover table-bordered">
-        <caption> Vacio </caption>
+        <caption> Medialuna </caption>
         <tbody>
             {% for key in medialuna %}
             <tr>
@@ -16,6 +16,24 @@
                 </td>
                 <td>
                     {{ medialuna[key] }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <table class="table table-sm table-hover table-bordered">
+        <caption> Ingredientes </caption>
+        <tbody>
+            {% for key in ingredientes %}
+            <tr>
+                <td>
+                    {{ key }}
+                </td>
+                <td>
+                    {{ ingredientes[key] }}
+                </td>
+                <td>
+                    {{ precios[key] }}
                 </td>
             </tr>
             {% endfor %}
