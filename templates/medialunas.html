@@ -11,30 +11,27 @@
         <tbody>
             {% for key in medialuna %}
             <tr>
-                <td>
-                    {{ key }}
-                </td>
-                <td>
-                    {{ medialuna[key] }}
-                </td>
+                <td> {{ key }} </td>
+                <td> {{ medialuna[key] }} </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
     <table class="table table-sm table-hover table-bordered">
         <caption> Ingredientes </caption>
+        <thead class="table-dark">
+            <tr>
+                <th> Ingrediente </th>
+                <th> Cantidad (gr) </th>
+                <th> Precio </th>
+            </tr>
+        </thead>
         <tbody>
             {% for key in ingredientes %}
             <tr>
-                <td>
-                    {{ key }}
-                </td>
-                <td>
-                    {{ ingredientes[key] }}
-                </td>
-                <td>
-                    {{ precios[key] }}
-                </td>
+                <td> {{ key }} </td>
+                <td> {{ ingredientes[key] }} </td>
+                <td> ${{ precios[key] }} </td>
             </tr>
             {% endfor %}
         </tbody>
