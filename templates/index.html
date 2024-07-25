@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Titulo
+    Medialunas - Home
 {% endblock %}
 
 {% block main %}
@@ -12,9 +12,9 @@
         <button type="button" class="btn btn-primary btn-lg">Large button</button>
     </div>
     <div class="container table-responsive-sm">
-        <table class="table table-sm table-hover table-bordered">
+        <table class="table table-sm table-hover table-bordered border-dark">
             <caption> Lista de medialunas </caption>
-            <thead>
+            <thead class="table-dark">
                 <tr>
                     {% for columna in columnas_medialunas %}
                     <td> {{ columna }} </td>
