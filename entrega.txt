@@ -24,7 +24,7 @@ Apartado freezer, en donde cargar stock, sacarlo y ver su fecha limite.
 
 # Base de datos
 
-Masa madre - tipo de dato texto
+
 
 # Esteticas
 
