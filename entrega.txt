@@ -4,7 +4,8 @@ Aplicación Medialunas
 ### Funcionalidades:
 
 * Manejo información en base de datos:
-	-Agregar 
+	-Agregar (in progress)
+		falta poco de html (el submit del form de /agregar) y toda la lógica.
 	-Editar
 	-Eliminar
 	-Crear log de cada entrega (en archivo)
@@ -21,6 +22,7 @@ Aplicación Medialunas
 Barra de busqueda
 Stock semanal
 Apartado freezer, en donde cargar stock, sacarlo y ver su fecha limite.
+Opcional: eliminar dato id de la tabla ingredientes/precio en detalle de /medialunas/.
 
 # Base de datos
 
