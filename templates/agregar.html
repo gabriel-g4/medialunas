@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Hola
+{% endblock %}
+
+{% block main %}
+    <h1>Agregar</h1>
+    <div class="btn-container">
+        <a href="/" class="btn btn-secondary btn-lg">Volver</a>
+    </div>
+    <form class="row">
+        <div class="form-group col-md-4">
+            <h6> Medialuna </h6>
+            {% for columna in columnas_medialunas %}
+                <input type="text" name="{{ columna }}" placeholder="{{ columna }}">
+                <br>
+            {% endfor %}
+        </div>
+        <br>
+        <div class="form-group col-md-4">
+            <h6> Ingredientes </h6>
+            {% for columna in columnas_ingredientes_precios %}
+                <input type="text" name="{{ columna }}" placeholder="{{ columna }}">
+                <br>
+            {% endfor %}
+        </div>
+        <br>
+        <div class="form-group col-md-4">
+            <h6> Precio </h6>
+            {% for columna in columnas_ingredientes_precios %}
+                <input type="text" name="{{ columna }}" placeholder="{{ columna }}">
+                <br>
+            {% endfor %}
+        </div>
+        <br>
+    </form>
+{% endblock %}

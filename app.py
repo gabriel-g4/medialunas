@@ -27,15 +27,17 @@ for i in range(len(COLUMNAS_INGREDIENTES_PRECIOS)):
 def index():
     with sqlite3.connect(database) as connection:
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM medialunas ORDER BY id DESC LIMIT 10")
+        cursor.execute("SELECT * FROM medialunas ORDER BY id DESC")
         data = cursor.fetchall()
-        
+
     return render_template("index.html", medialunas=data\
                            , columnas_medialunas=COLUMNAS_MEDIALUNAS)
 
+
 @app.route('/agregar')
 def agregar():
-    return redirect('/')
+    return render_template("agregar.html", columnas_medialunas=COLUMNAS_MEDIALUNAS
+                           , columnas_ingredientes_precios=COLUMNAS_INGREDIENTES_PRECIOS[1:])
 
 
 @app.route('/medialunas/<int:id>')
