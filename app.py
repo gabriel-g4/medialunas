@@ -1,6 +1,7 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 import sqlite3
 from funciones import crear_diccionario
+from datetime import datetime
 
 app = Flask(__name__)
 database = "medialunas.db"
@@ -34,10 +35,33 @@ def index():
                            , columnas_medialunas=COLUMNAS_MEDIALUNAS)
 
 
-@app.route('/agregar')
+@app.route('/agregar', methods=["GET", "POST"])
 def agregar():
-    return render_template("agregar.html", columnas_medialunas=COLUMNAS_MEDIALUNAS
+    if request.method == "GET":
+        return render_template("agregar.html", columnas_medialunas=COLUMNAS_MEDIALUNAS
                            , columnas_ingredientes_precios=COLUMNAS_INGREDIENTES_PRECIOS[1:])
+    elif request.method == "POST":
+
+        cantidad = request.form.get("cantidad")
+        tiempo_descanso = request.form.get("tiempo_descanso")
+        tiempo_coccion = request.form.get("tiempo_coccion")
+        costo_c_una = request.form.get("costo_c_una")
+        cantidad_vendida = request.form.get("cantidad_vendida")
+        precio_c_una = request.form.get("precio_c_una")
+        ganancia = request.form.get("ganancia")
+        tipo = request.form.get("tipo")
+        masa_madre = request.form.get("masa_madre")
+        
+        with sqlite3.connect(database) as connection:
+            cursor = connection.cursor()
+            cursor.execute("INSERT INTO medialunas (cantidad, tiempo_descanso\
+                           , tiempo_coccion, costo_c_una, cantidad_vendida, precio_c_una, \
+                           ganancia, tipo, fecha, masa_madre) VALUES (?,?,?,?,?,?,?,?, \
+                           ? ,?)",
+                            (cantidad, tiempo_descanso, tiempo_coccion, costo_c_una,
+                             cantidad_vendida, precio_c_una, ganancia, tipo, datetime.now() , masa_madre))
+        return redirect("/")
+            
 
 
 @app.route('/medialunas/<int:id>')

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block title %}
-Hola
+Agregar
 {% endblock %}
 
 {% block main %}
@@ -9,13 +9,37 @@ Hola
     <div class="btn-container">
         <a href="/" class="btn btn-secondary btn-lg">Volver</a>
     </div>
-    <form class="row">
+    <form action="/agregar" class="row" method="post">
         <div class="form-group col-md-4">
             <h6> Medialuna </h6>
-            {% for columna in columnas_medialunas %}
-                <input type="text" name="{{ columna }}" placeholder="{{ columna }}">
+                <input type="text" name="cantidad" placeholder="cantidad">
                 <br>
-            {% endfor %}
+                <input type="text" name="tiempo_descanso" placeholder="tiempo_descanso">
+                <br>
+                <input type="text" name="tiempo_coccion" placeholder="tiempo_coccion">
+                <br>
+                <input type="text" name="costo_c_una" placeholder="costo_c_una">
+                <br>
+                <input type="text" name="cantidad_vendida" placeholder="cantidad_vendida">
+                <br>
+                <input type="text" name="precio_c_una" placeholder="precio_c_una">
+                <br>
+                <input type="text" name="ganancia" placeholder="ganancia">
+                <br>
+
+                <label for="tipo"> Tipo: </label>
+                <select name="tipo" id="tipo">
+                    <option value="produccion"> Produccion </option>
+                    <option value="practica"> Practica </option>
+                </select>
+                <br>
+                <label for="masa_madre"> Masa madre: </label>
+                <select name="masa_madre" id="masa_madre">
+                    <option value="poolish"> Poolish </option>
+                    <option value="biga"> Biga </option>
+                    <option value="masamadre"> Masa madre </option>
+                </select>
+                <br>
         </div>
         <br>
         <div class="form-group col-md-4">
@@ -34,5 +58,9 @@ Hola
             {% endfor %}
         </div>
         <br>
+        
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary mb-2">Enviar</button>
+        </div>
     </form>
 {% endblock %}
