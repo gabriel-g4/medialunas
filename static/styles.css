@@ -21,3 +21,22 @@ h1
     margin-top: 1rem !important;
 }
 
+textarea
+{
+    margin-top: 5% !important;
+    margin-bottom: 5% !important;
+}
+
+table
+{
+    table-layout: fixed; 
+    word-break: break-all; 
+    
+}
+
+.truncate {
+    white-space: nowrap;        /* No permite que el texto se muestre en múltiples líneas */
+    overflow: hidden;           /* Oculta el texto que se desborda del contenedor */
+    text-overflow: ellipsis;    /* Agrega puntos suspensivos al final del texto truncado */
+    max-width: 200px;           /* Ajusta el ancho máximo para truncar el texto según el tamaño que prefieras */
+}

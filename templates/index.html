@@ -25,7 +25,7 @@
                 {% for medialuna in medialunas %}
                 <tr data-url="{{ url_for('mostrar_medialunas', id=medialuna[0]) }}">
                     {% for valor in medialuna %}
-                    <td> {{ valor }} </td>
+                    <td class="truncate"> {{ valor }} </td>
                     {% endfor %}
                 </tr>
                 {% endfor %}

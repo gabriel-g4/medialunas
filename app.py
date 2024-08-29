@@ -51,6 +51,7 @@ def agregar():
         ganancia = request.form.get("ganancia")
         tipo = request.form.get("tipo")
         masa_madre = request.form.get("masa_madre")
+        texto = request.form.get("texto")
 
         harina = request.form.get("harina")
         levadura = request.form.get("levadura")
@@ -76,10 +77,10 @@ def agregar():
             cursor = connection.cursor()
             cursor.execute("INSERT INTO medialunas (cantidad, tiempo_descanso\
                            , tiempo_coccion, costo_c_una, cantidad_vendida, precio_c_una, \
-                           ganancia, tipo, fecha, masa_madre) VALUES (?,?,?,?,?,?,?,?, \
-                           ? ,?)",
+                           ganancia, tipo, fecha, masa_madre, texto) VALUES (?,?,?,?,?,?,?,?, \
+                           ? ,?,?)",
                             (cantidad, tiempo_descanso, tiempo_coccion, costo_c_una,
-                             cantidad_vendida, precio_c_una, ganancia, tipo, datetime.now() , masa_madre))
+                             cantidad_vendida, precio_c_una, ganancia, tipo, datetime.now() , masa_madre, texto))
             
             # Tomar el id de la medialuna insertada en Medialunas.
 
@@ -117,13 +118,12 @@ def mostrar_medialunas(id: int):
         cursor.execute("SELECT * FROM precios WHERE id=?", (str(id),))
         selected_precios = cursor.fetchone()
     
-    print(COLUMNAS_INGREDIENTES_PRECIOS)
 
     medialuna = crear_diccionario(COLUMNAS_MEDIALUNAS, selected_medialuna)
     ingredientes = crear_diccionario(COLUMNAS_INGREDIENTES_PRECIOS, selected_ingredientes)
     precios = crear_diccionario(COLUMNAS_INGREDIENTES_PRECIOS, selected_precios)
 
-    return render_template("medialunas.html", medialuna=medialuna, 
+    return render_template("medialunas.html", medialuna=medialuna,
                            ingredientes=ingredientes, precios=precios)
 
 
