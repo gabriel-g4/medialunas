@@ -38,8 +38,8 @@ def index():
 @app.route('/agregar', methods=["GET", "POST"])
 def agregar():
     if request.method == "GET":
-        return render_template("agregar.html", columnas_medialunas=COLUMNAS_MEDIALUNAS
-                           , columnas_ingredientes_precios=COLUMNAS_INGREDIENTES_PRECIOS[1:])
+        return render_template("agregar.html",
+                           columnas_ingredientes_precios=COLUMNAS_INGREDIENTES_PRECIOS[1:])
     elif request.method == "POST":
 
         cantidad = request.form.get("cantidad")
@@ -51,6 +51,26 @@ def agregar():
         ganancia = request.form.get("ganancia")
         tipo = request.form.get("tipo")
         masa_madre = request.form.get("masa_madre")
+
+        harina = request.form.get("harina")
+        levadura = request.form.get("levadura")
+        azucar = request.form.get("azucar")
+        miel = request.form.get("miel")
+        sal = request.form.get("sal")
+        leche = request.form.get("leche")
+        huevos = request.form.get("huevos")
+        manteca = request.form.get("manteca")
+
+        precio_harina = request.form.get("precio_harina")
+        precio_levadura = request.form.get("precio_levadura")
+        precio_azucar = request.form.get("precio_azucar")
+        precio_miel = request.form.get("precio_miel")
+        precio_sal = request.form.get("precio_sal")
+        precio_leche = request.form.get("precio_leche")
+        precio_huevos = request.form.get("precio_huevos")
+        precio_manteca = request.form.get("precio_manteca")
+
+        
         
         with sqlite3.connect(database) as connection:
             cursor = connection.cursor()
@@ -60,6 +80,25 @@ def agregar():
                            ? ,?)",
                             (cantidad, tiempo_descanso, tiempo_coccion, costo_c_una,
                              cantidad_vendida, precio_c_una, ganancia, tipo, datetime.now() , masa_madre))
+            
+            # Tomar el id de la medialuna insertada en Medialunas.
+
+            cursor.execute("SELECT id FROM medialunas ORDER BY fecha DESC")
+            id = cursor.fetchone()[0]
+
+            # añadir entrada a ingredientes
+           
+            cursor.execute("INSERT INTO ingredientes (id, harina, levadura, azucar, miel, sal,\
+                           leche, huevos, manteca) VALUES (?,?,?,?,?,?,?,?,?)",
+                           (id, harina, levadura, azucar, miel, sal, leche, huevos, manteca))
+            
+            # añadir entrada a precios
+
+            cursor.execute("INSERT INTO precios (id, harina, levadura, azucar, miel, sal,\
+                           leche, huevos, manteca) VALUES (?,?,?,?,?,?,?,?,?)",
+                           (id, precio_harina, precio_levadura, precio_azucar, precio_miel, 
+                            precio_sal, precio_leche, precio_huevos, precio_manteca))
+            
         return redirect("/")
             
 

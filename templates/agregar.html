@@ -53,11 +53,15 @@ Agregar
         <div class="form-group col-md-4">
             <h6> Precio </h6>
             {% for columna in columnas_ingredientes_precios %}
-                <input type="text" name="{{ columna }}" placeholder="{{ columna }}">
+                <input type="text" name="precio_{{ columna }}" placeholder="{{ columna }}">
                 <br>
             {% endfor %}
         </div>
         <br>
+
+        <div>
+            <textarea name="texto" cols="50" rows="5" placeholder="Comentarios.."></textarea>
+        </div>
         
         <div class="col-12">
             <button type="submit" class="btn btn-primary mb-2">Enviar</button>
