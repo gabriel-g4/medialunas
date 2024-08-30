@@ -34,6 +34,17 @@ def index():
     return render_template("index.html", medialunas=data\
                            , columnas_medialunas=COLUMNAS_MEDIALUNAS)
 
+@app.route('/eliminar/<int:id>')
+def eliminar(id: int):
+    with sqlite3.connect(database) as connection:
+        cursor = connection.cursor()
+        cursor.execute("DELETE FROM medialunas WHERE id = ?", (int(id),))
+        cursor.execute("DELETE FROM ingredientes WHERE id = ?", (int(id),))
+        cursor.execute("DELETE FROM precios WHERE id = ?", (int(id),))
+    return redirect('/')
+
+
+
 
 @app.route('/agregar', methods=["GET", "POST"])
 def agregar():
