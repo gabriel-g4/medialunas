@@ -27,13 +27,6 @@ textarea
     margin-bottom: 5% !important;
 }
 
-table
-{
-    table-layout: fixed; 
-    word-break: break-all; 
-    
-}
-
 .truncate {
     white-space: nowrap;        /* No permite que el texto se muestre en múltiples líneas */
     overflow: hidden;           /* Oculta el texto que se desborda del contenedor */
