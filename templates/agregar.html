@@ -12,52 +12,65 @@ Agregar
     <form action="/agregar" class="row" method="post">
         <div class="form-group col-md-4">
             <h6> Medialuna </h6>
+            <div>
                 <input type="text" name="cantidad" placeholder="cantidad">
-                <br>
+            </div>
+            <div>
                 <input type="text" name="tiempo_descanso" placeholder="tiempo_descanso">
-                <br>
+            </div>
+            <div>
                 <input type="text" name="tiempo_coccion" placeholder="tiempo_coccion">
-                <br>
+            </div>
+            <div>
                 <input type="text" name="costo_c_una" placeholder="costo_c_una">
-                <br>
+            </div>
+            <div>
                 <input type="text" name="cantidad_vendida" placeholder="cantidad_vendida">
-                <br>
+            </div>
+            <div>
                 <input type="text" name="precio_c_una" placeholder="precio_c_una">
-                <br>
+            </div>
+            <div>
                 <input type="text" name="ganancia" placeholder="ganancia">
-                <br>
-
+            </div>
+                
+            <div>
                 <label for="tipo"> Tipo: </label>
                 <select name="tipo" id="tipo">
                     <option value="produccion"> Produccion </option>
                     <option value="practica"> Practica </option>
                 </select>
-                <br>
+            </div>
+            
+            <div>
                 <label for="masa_madre"> Masa madre: </label>
                 <select name="masa_madre" id="masa_madre">
                     <option value="poolish"> Poolish </option>
                     <option value="biga"> Biga </option>
                     <option value="masamadre"> Masa madre </option>
                 </select>
-                <br>
+            </div>
         </div>
-        <br>
+
+        
         <div class="form-group col-md-4">
             <h6> Ingredientes </h6>
             {% for columna in columnas_ingredientes_precios %}
-                <input type="text" name="{{ columna }}" placeholder="{{ columna }}">
-                <br>
+                <div>
+                    <input type="text" name="{{ columna }}" placeholder="{{ columna }}">
+                </div>    
             {% endfor %}
         </div>
-        <br>
+        
         <div class="form-group col-md-4">
             <h6> Precio </h6>
             {% for columna in columnas_ingredientes_precios %}
+            <div>
                 <input type="text" name="precio_{{ columna }}" placeholder="{{ columna }}">
-                <br>
+            </div>         
             {% endfor %}
         </div>
-        <br>
+        
 
         <div>
             <textarea name="texto" cols="50" rows="5" placeholder="Comentarios.."></textarea>
@@ -66,5 +79,6 @@ Agregar
         <div class="col-12">
             <button type="submit" class="btn btn-primary mb-2">Agregar</button>
         </div>
+        
     </form>
 {% endblock %}
