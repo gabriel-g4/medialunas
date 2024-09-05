@@ -13,25 +13,25 @@ Agregar
         <div class="form-group col-md-4">
             <h6> Medialuna </h6>
             <div>
-                <input type="text" name="cantidad" placeholder="cantidad">
+                <input type="text" name="cantidad" placeholder="cantidad" required>
             </div>
             <div>
-                <input type="text" name="tiempo_descanso" placeholder="tiempo_descanso">
+                <input type="text" name="tiempo_descanso" placeholder="tiempo_descanso" required>
             </div>
             <div>
-                <input type="text" name="tiempo_coccion" placeholder="tiempo_coccion">
+                <input type="text" name="tiempo_coccion" placeholder="tiempo_coccion" required>
             </div>
             <div>
-                <input type="text" name="costo_c_una" placeholder="costo_c_una">
+                <input type="text" name="costo_c_una" placeholder="costo_c_una" required>
             </div>
             <div>
-                <input type="text" name="cantidad_vendida" placeholder="cantidad_vendida">
+                <input type="text" name="cantidad_vendida" placeholder="cantidad_vendida" required>
             </div>
             <div>
-                <input type="text" name="precio_c_una" placeholder="precio_c_una">
+                <input type="text" name="precio_c_una" placeholder="precio_c_una" required>
             </div>
             <div>
-                <input type="text" name="ganancia" placeholder="ganancia">
+                <input type="text" name="ganancia" placeholder="ganancia" required>
             </div>
                 
             <div>
@@ -57,7 +57,7 @@ Agregar
             <h6> Ingredientes </h6>
             {% for columna in columnas_ingredientes_precios %}
                 <div>
-                    <input type="text" name="{{ columna }}" placeholder="{{ columna }}">
+                    <input type="text" name="{{ columna }}" placeholder="{{ columna }}" required>
                 </div>    
             {% endfor %}
         </div>
@@ -66,19 +66,19 @@ Agregar
             <h6> Precio </h6>
             {% for columna in columnas_ingredientes_precios %}
             <div>
-                <input type="text" name="precio_{{ columna }}" placeholder="{{ columna }}">
+                <input type="text" name="precio_{{ columna }}" placeholder="{{ columna }}" required>
             </div>         
             {% endfor %}
         </div>
         
 
         <div>
-            <textarea name="texto" cols="50" rows="5" placeholder="Comentarios.."></textarea>
+            <textarea name="texto" cols="50" rows="5" placeholder="Comentarios.. (opcional)"></textarea>
         </div>
         
         <div class="col-12">
             <button type="submit" class="btn btn-primary mb-2">Agregar</button>
         </div>
-        
+
     </form>
 {% endblock %}
