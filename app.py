@@ -82,7 +82,7 @@ def agregar():
                            ganancia, tipo, creacion, masa_madre, texto, ultima_modificacion) VALUES (?,?,?,?,?,?,?,?, \
                            ? ,?,?,?)",
                             (cantidad, tiempo_descanso, tiempo_coccion, costo_c_una,
-                             cantidad_vendida, precio_c_una, ganancia, tipo, datetime.now() , masa_madre, texto, datetime.now()))
+                             cantidad_vendida, precio_c_una, ganancia, tipo, datetime.now().strftime("%d-%m-%Y %H:%M:%S") , masa_madre, texto, datetime.now().strftime("%d-%m-%Y %H:%M:%S")))
             
             # Tomar el id de la medialuna insertada en Medialunas.
 
@@ -168,7 +168,7 @@ def editar(id: int):
                            , tiempo_coccion=?, costo_c_una=?, cantidad_vendida=?, precio_c_una=?, \
                            ganancia=?, tipo=?, ultima_modificacion=?, masa_madre=?, texto=? WHERE id = ?",
                             (cantidad, tiempo_descanso, tiempo_coccion, costo_c_una,
-                             cantidad_vendida, precio_c_una, ganancia, tipo, datetime.now() , masa_madre, texto,
+                             cantidad_vendida, precio_c_una, ganancia, tipo, datetime.now().strftime("%d-%m-%Y %H:%M:%S"), masa_madre, texto,
                              str(id)))
             
             # añadir entrada a ingredientes
