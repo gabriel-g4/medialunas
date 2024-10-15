@@ -4,29 +4,35 @@ Aplicación Medialunas
 ### Funcionalidades:
 
 * Manejo información en base de datos:
-	-Agregar (in progress)
-		falta poco de html (el submit del form de /agregar) y toda la lógica.
 	-Editar
-	-Eliminar
 	-Crear log de cada entrega (en archivo)
+	-Agregar hecho.
+	-Eliminar hecho.
 
 * Leer información: Ruta -> /
-	-Leer
 	-Filtros
 	-Buscador por columna.
+	-Barra de busqueda
+	-Stock semanal
+	-Apartado freezer, en donde cargar stock, sacarlo y ver su fecha limite.
+	-Leer hecho.
 
 ## Tareas
 
 # Funcionales
 
-Barra de busqueda
-Stock semanal
-Apartado freezer, en donde cargar stock, sacarlo y ver su fecha limite.
+Eliminar js de los html.
+
 Opcional: eliminar dato id de la tabla ingredientes/precio en detalle de /medialunas/.
+
+Hacer que en /editar se pongan por defecto los valores del tag selected/option de la base de datos con JS.
+
+Refactor completo a app.py y a archivos html, eliminar hardcoding.
+
 
 # Base de datos
 
-
+Opcional: al finalizar, eliminar la db de práctica y crear un archivo.sql con el schema para poder crearla.
 
 # Esteticas
 
@@ -40,4 +46,5 @@ en /, mostrar la tabla directamente con dos botones: Agregar y Eliminar
 				     |_ un botón: Editar en donde se pueda Agregar, Eliminar y Editar
 
 en /, mostrar 3 botones, solo con el botón Mostrar se vería la tabla y buscador.
+Usar anchors internos en el html.
 
