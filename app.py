@@ -197,8 +197,8 @@ def eliminar(id: int):
 
 
 
-@app.route('/medialunas/<int:id>')
-def mostrar_medialunas(id: int):
+@app.route('/detalle/<int:id>')
+def mostrar_detalle(id: int):
     with sqlite3.connect(database) as connection:
         cursor = connection.cursor()
         
@@ -216,7 +216,7 @@ def mostrar_medialunas(id: int):
     ingredientes = crear_diccionario(COLUMNAS_INGREDIENTES_PRECIOS, selected_ingredientes)
     precios = crear_diccionario(COLUMNAS_INGREDIENTES_PRECIOS, selected_precios)
 
-    return render_template("medialunas.html", medialuna=medialuna,
+    return render_template("detalle.html", medialuna=medialuna,
                            ingredientes=ingredientes, precios=precios)
 
 

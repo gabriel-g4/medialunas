@@ -21,7 +21,7 @@
             </thead>
             <tbody>
                 {% for medialuna in medialunas %}
-                <tr data-url="{{ url_for('mostrar_medialunas', id=medialuna[0]) }}">
+                <tr data-url="{{ url_for('mostrar_detalle', id=medialuna[0]) }}">
                     {% for valor in medialuna %}
                     <td class="truncate"> {{ valor }} </td>
                     {% endfor %}
