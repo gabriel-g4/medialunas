@@ -34,23 +34,14 @@ def index():
     return render_template("index.html", medialunas=data\
                            , columnas_medialunas=COLUMNAS_MEDIALUNAS)
 
-@app.route('/eliminar/<int:id>')
-def eliminar(id: int):
-    with sqlite3.connect(database) as connection:
-        cursor = connection.cursor()
-        cursor.execute("DELETE FROM medialunas WHERE id = ?", (int(id),))
-        cursor.execute("DELETE FROM ingredientes WHERE id = ?", (int(id),))
-        cursor.execute("DELETE FROM precios WHERE id = ?", (int(id),))
-    return redirect('/')
-
-
-
 
 @app.route('/agregar', methods=["GET", "POST"])
 def agregar():
+
     if request.method == "GET":
         return render_template("agregar.html",
-                           columnas_ingredientes_precios=COLUMNAS_INGREDIENTES_PRECIOS[1:])
+                           columnas_ingredientes_precios=COLUMNAS_INGREDIENTES_PRECIOS[1:], medialuna="", ingredientes="", precios="", titulo="Agregar", boton="Agregar")
+    
     elif request.method == "POST":
 
         cantidad = request.form.get("cantidad")
@@ -113,6 +104,40 @@ def agregar():
             
         return redirect("/")
             
+
+@app.route('/editar/<int:id>', methods=["GET", "POST"])
+def editar(id: int):
+    if request.method == "GET":
+        with sqlite3.connect(database) as connection:
+            cursor = connection.cursor()
+            
+            cursor.execute("SELECT * FROM medialunas WHERE id=?", (str(id),))
+            selected_medialuna = cursor.fetchone()
+
+            cursor.execute("SELECT * FROM ingredientes WHERE id=?", (str(id),))
+            selected_ingredientes = cursor.fetchone()
+
+            cursor.execute("SELECT * FROM precios WHERE id=?", (str(id),))
+            selected_precios = cursor.fetchone()
+        
+        medialuna = crear_diccionario(COLUMNAS_MEDIALUNAS, selected_medialuna)
+        ingredientes = crear_diccionario(COLUMNAS_INGREDIENTES_PRECIOS, selected_ingredientes)
+        precios = crear_diccionario(COLUMNAS_INGREDIENTES_PRECIOS, selected_precios)
+        
+        return render_template("agregar.html", columnas_ingredientes_precios=COLUMNAS_INGREDIENTES_PRECIOS[1:],
+                            medialuna=medialuna, ingredientes=ingredientes, precios=precios, titulo="Editar Medialunas Nº:" + str(medialuna['id']),
+                            boton="Guardar")
+
+
+@app.route('/eliminar/<int:id>')
+def eliminar(id: int):
+    with sqlite3.connect(database) as connection:
+        cursor = connection.cursor()
+        cursor.execute("DELETE FROM medialunas WHERE id = ?", (int(id),))
+        cursor.execute("DELETE FROM ingredientes WHERE id = ?", (int(id),))
+        cursor.execute("DELETE FROM precios WHERE id = ?", (int(id),))
+    return redirect('/')
+
 
 
 @app.route('/medialunas/<int:id>')

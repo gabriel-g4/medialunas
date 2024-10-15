@@ -5,7 +5,7 @@ Agregar
 {% endblock %}
 
 {% block main %}
-    <h1>Agregar</h1>
+    <h1> {{ titulo }}</h1>
     <div class="btn-container">
         <a href="/" class="btn btn-secondary btn-lg">Volver</a>
     </div>
@@ -13,38 +13,38 @@ Agregar
         <div class="form-group col-md-4">
             <h6> Medialuna </h6>
             <div>
-                <input type="text" name="cantidad" placeholder="cantidad" required>
+                <input type="text" name="cantidad" placeholder="cantidad" required value="{{ medialuna['cantidad'] }}">
             </div>
             <div>
-                <input type="text" name="tiempo_descanso" placeholder="tiempo_descanso" required>
+                <input type="text" name="tiempo_descanso" placeholder="tiempo_descanso" required value="{{ medialuna['tiempo_descanso'] }}">
             </div>
             <div>
-                <input type="text" name="tiempo_coccion" placeholder="tiempo_coccion" required>
+                <input type="text" name="tiempo_coccion" placeholder="tiempo_coccion" required value="{{ medialuna['tiempo_coccion'] }}">
             </div>
             <div>
-                <input type="text" name="costo_c_una" placeholder="costo_c_una" required>
+                <input type="text" name="costo_c_una" placeholder="costo_c_una" required value="{{ medialuna['costo_c_una'] }}">
             </div>
             <div>
-                <input type="text" name="cantidad_vendida" placeholder="cantidad_vendida" required>
+                <input type="text" name="cantidad_vendida" placeholder="cantidad_vendida" required value="{{ medialuna['cantidad_vendida'] }}">
             </div>
             <div>
-                <input type="text" name="precio_c_una" placeholder="precio_c_una" required>
+                <input type="text" name="precio_c_una" placeholder="precio_c_una" required value="{{ medialuna['precio_c_una'] }}">
             </div>
             <div>
-                <input type="text" name="ganancia" placeholder="ganancia" required>
+                <input type="text" name="ganancia" placeholder="ganancia" required value="{{ medialuna['ganancia'] }}">
             </div>
-                
+            <!-- TO DO -->
             <div>
                 <label for="tipo"> Tipo: </label>
-                <select name="tipo" id="tipo">
+                <select name="tipo" id="tipo" value="{{ medialuna['tipo'] }}">
                     <option value="produccion"> Produccion </option>
                     <option value="practica"> Practica </option>
                 </select>
             </div>
-            
+            <!-- TO DO -->
             <div>
                 <label for="masa_madre"> Masa madre: </label>
-                <select name="masa_madre" id="masa_madre">
+                <select name="masa_madre" id="masa_madre" value="{{ medialuna['masa_madre'] }}">
                     <option value="poolish"> Poolish </option>
                     <option value="biga"> Biga </option>
                     <option value="masamadre"> Masa madre </option>
@@ -57,7 +57,7 @@ Agregar
             <h6> Ingredientes </h6>
             {% for columna in columnas_ingredientes_precios %}
                 <div>
-                    <input type="text" name="{{ columna }}" placeholder="{{ columna }}" required>
+                    <input type="text" name="{{ columna }}" placeholder="{{ columna }}" required value="{{ ingredientes[ columna ] }}">
                 </div>    
             {% endfor %}
         </div>
@@ -66,18 +66,18 @@ Agregar
             <h6> Precio </h6>
             {% for columna in columnas_ingredientes_precios %}
             <div>
-                <input type="text" name="precio_{{ columna }}" placeholder="{{ columna }}" required>
+                <input type="text" name="precio_{{ columna }}" placeholder="{{ columna }}" required value="{{ precios[ columna ] }}">
             </div>         
             {% endfor %}
         </div>
         
 
         <div>
-            <textarea name="texto" cols="50" rows="5" placeholder="Comentarios.. (opcional)"></textarea>
+            <textarea name="texto" cols="50" rows="5"> {{ medialuna['texto'] }} </textarea>
         </div>
         
         <div class="col-12">
-            <button type="submit" class="btn btn-primary mb-2">Agregar</button>
+            <button type="submit" class="btn btn-primary mb-2">{{ boton }}</button>
         </div>
 
     </form>
