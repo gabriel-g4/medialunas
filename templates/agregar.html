@@ -9,7 +9,7 @@ Agregar
     <div class="btn-container">
         <a href="/" class="btn btn-secondary btn-lg">Volver</a>
     </div>
-    <form action="/agregar" class="row" method="post">
+    <form action="/{{ action }}" class="row" method="post">
         <div class="form-group col-md-4">
             <h6> Medialuna </h6>
             <div>
@@ -77,7 +77,7 @@ Agregar
         </div>
         
         <div class="col-12">
-            <button type="submit" class="btn btn-primary mb-2">{{ boton }}</button>
+            <button type="submit" class="btn btn-primary btn-lg mb-2">{{ boton }}</button>
         </div>
 
     </form>

@@ -40,7 +40,7 @@ def agregar():
 
     if request.method == "GET":
         return render_template("agregar.html",
-                           columnas_ingredientes_precios=COLUMNAS_INGREDIENTES_PRECIOS[1:], medialuna="", ingredientes="", precios="", titulo="Agregar", boton="Agregar")
+                           columnas_ingredientes_precios=COLUMNAS_INGREDIENTES_PRECIOS[1:], medialuna="", ingredientes="", precios="", titulo="Agregar", boton="Agregar", action="agregar")
     
     elif request.method == "POST":
 
@@ -79,14 +79,14 @@ def agregar():
             cursor = connection.cursor()
             cursor.execute("INSERT INTO medialunas (cantidad, tiempo_descanso\
                            , tiempo_coccion, costo_c_una, cantidad_vendida, precio_c_una, \
-                           ganancia, tipo, fecha, masa_madre, texto) VALUES (?,?,?,?,?,?,?,?, \
-                           ? ,?,?)",
+                           ganancia, tipo, creacion, masa_madre, texto, ultima_modificacion) VALUES (?,?,?,?,?,?,?,?, \
+                           ? ,?,?,?)",
                             (cantidad, tiempo_descanso, tiempo_coccion, costo_c_una,
-                             cantidad_vendida, precio_c_una, ganancia, tipo, datetime.now() , masa_madre, texto))
+                             cantidad_vendida, precio_c_una, ganancia, tipo, datetime.now() , masa_madre, texto, datetime.now()))
             
             # Tomar el id de la medialuna insertada en Medialunas.
 
-            cursor.execute("SELECT id FROM medialunas ORDER BY fecha DESC")
+            cursor.execute("SELECT id FROM medialunas ORDER BY creacion DESC")
             id = cursor.fetchone()[0]
 
             # añadir entrada a ingredientes
@@ -107,7 +107,9 @@ def agregar():
 
 @app.route('/editar/<int:id>', methods=["GET", "POST"])
 def editar(id: int):
+
     if request.method == "GET":
+
         with sqlite3.connect(database) as connection:
             cursor = connection.cursor()
             
@@ -125,8 +127,63 @@ def editar(id: int):
         precios = crear_diccionario(COLUMNAS_INGREDIENTES_PRECIOS, selected_precios)
         
         return render_template("agregar.html", columnas_ingredientes_precios=COLUMNAS_INGREDIENTES_PRECIOS[1:],
-                            medialuna=medialuna, ingredientes=ingredientes, precios=precios, titulo="Editar Medialunas Nº:" + str(medialuna['id']),
-                            boton="Guardar")
+                            medialuna=medialuna, ingredientes=ingredientes, precios=precios, titulo="Editar Medialunas Nº:" + str(id),
+                            boton="Guardar", action="editar/" + str(id))
+    
+    elif request.method == "POST":
+        
+        cantidad = request.form.get("cantidad")
+        tiempo_descanso = request.form.get("tiempo_descanso")
+        tiempo_coccion = request.form.get("tiempo_coccion")
+        costo_c_una = request.form.get("costo_c_una")
+        cantidad_vendida = request.form.get("cantidad_vendida")
+        precio_c_una = request.form.get("precio_c_una")
+        ganancia = request.form.get("ganancia")
+        tipo = request.form.get("tipo")
+        masa_madre = request.form.get("masa_madre")
+        texto = request.form.get("texto")
+
+        harina = request.form.get("harina")
+        levadura = request.form.get("levadura")
+        azucar = request.form.get("azucar")
+        miel = request.form.get("miel")
+        sal = request.form.get("sal")
+        leche = request.form.get("leche")
+        huevos = request.form.get("huevos")
+        manteca = request.form.get("manteca")
+
+        precio_harina = request.form.get("precio_harina")
+        precio_levadura = request.form.get("precio_levadura")
+        precio_azucar = request.form.get("precio_azucar")
+        precio_miel = request.form.get("precio_miel")
+        precio_sal = request.form.get("precio_sal")
+        precio_leche = request.form.get("precio_leche")
+        precio_huevos = request.form.get("precio_huevos")
+        precio_manteca = request.form.get("precio_manteca")
+
+        
+        with sqlite3.connect(database) as connection:
+            cursor = connection.cursor()
+            cursor.execute("UPDATE medialunas SET cantidad=?, tiempo_descanso=?\
+                           , tiempo_coccion=?, costo_c_una=?, cantidad_vendida=?, precio_c_una=?, \
+                           ganancia=?, tipo=?, ultima_modificacion=?, masa_madre=?, texto=? WHERE id = ?",
+                            (cantidad, tiempo_descanso, tiempo_coccion, costo_c_una,
+                             cantidad_vendida, precio_c_una, ganancia, tipo, datetime.now() , masa_madre, texto,
+                             str(id)))
+            
+            # añadir entrada a ingredientes
+           
+            cursor.execute("UPDATE ingredientes SET harina=?, levadura=?, azucar=?, miel=?, sal=?,\
+                           leche=?, huevos=?, manteca=? WHERE id = ?",
+                           (harina, levadura, azucar, miel, sal, leche, huevos, manteca, str(id)))
+            
+            # añadir entrada a precios
+
+            cursor.execute("UPDATE precios SET harina=?, levadura=?, azucar=?, miel=?, sal=?,\
+                           leche=?, huevos=?, manteca=? WHERE id = ?",
+                           (precio_harina, precio_levadura, precio_azucar, precio_miel, precio_sal, precio_leche, precio_huevos, precio_manteca, str(id)))
+            
+        return redirect("/")
 
 
 @app.route('/eliminar/<int:id>')
