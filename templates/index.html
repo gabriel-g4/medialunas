@@ -10,7 +10,7 @@
         <a href="/agregar" class="btn btn-primary btn-lg">Agregar</a>
     </div>
     <div class="container table-responsive-sm">
-        <table class="main-table table-sm table-hover table-bordered border-dark">
+        <table class="main-table table table-sm table-hover table-bordered border-dark">
             <caption> Lista de medialunas </caption>
             <thead class="table-dark">
                 <tr>
@@ -21,7 +21,7 @@
             </thead>
             <tbody>
                 {% for medialuna in medialunas %}
-                <tr data-url="{{ url_for('mostrar_detalle', id=medialuna[0]) }}">
+                <tr class="main-row" data-url="{{ url_for('mostrar_detalle', id=medialuna[0]) }}">
                     {% for valor in medialuna %}
                     <td class="truncate"> {{ valor }} </td>
                     {% endfor %}
@@ -33,14 +33,5 @@
     <!-- Attribution to favicon creators -->
     <a href="https://www.flaticon.com/free-icons/bread" title="bread icons">Bread icons created by Smashicons - Flaticon</a>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const rows = document.querySelectorAll('tr[data-url]');
-          rows.forEach(row => {
-            row.addEventListener('click', function() {
-              window.location.href = this.getAttribute('data-url');
-            });
-          });
-        });
-      </script>
+    <script src="../static/index.js"></script>
 {% endblock %}
