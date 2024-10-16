@@ -7,7 +7,7 @@ Agregar
 {% block main %}
     <h1> {{ titulo }}</h1>
     <div class="btn-container">
-        <a href="/" class="btn btn-secondary btn-lg">Volver</a>
+        <a href="/{{ back }}" class="btn btn-secondary btn-lg">Volver</a>
     </div>
     <form action="/{{ action }}" class="row" method="post">
         <div class="form-group col-md-4">

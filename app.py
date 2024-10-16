@@ -40,7 +40,7 @@ def agregar():
 
     if request.method == "GET":
         return render_template("agregar.html",
-                           columnas_ingredientes_precios=COLUMNAS_INGREDIENTES_PRECIOS[1:], medialuna="", ingredientes="", precios="", titulo="Agregar", boton="Agregar", action="agregar")
+                           columnas_ingredientes_precios=COLUMNAS_INGREDIENTES_PRECIOS[1:], medialuna="", ingredientes="", precios="", titulo="Agregar", boton="Agregar", action="agregar", back="")
     
     elif request.method == "POST":
 
@@ -128,7 +128,7 @@ def editar(id: int):
         
         return render_template("agregar.html", columnas_ingredientes_precios=COLUMNAS_INGREDIENTES_PRECIOS[1:],
                             medialuna=medialuna, ingredientes=ingredientes, precios=precios, titulo="Editar Medialunas Nº:" + str(id),
-                            boton="Guardar", action="editar/" + str(id))
+                            boton="Guardar", action="editar/" + str(id), back="detalle/" + str(id))
     
     elif request.method == "POST":
         
