@@ -27,6 +27,14 @@ textarea
     margin-bottom: 5% !important;
 }
 
+.main-table tr {
+    cursor: pointer;
+}
+
+.main-table thead tr {
+    cursor: default;
+}
+
 .truncate {
     white-space: nowrap;        /* No permite que el texto se muestre en múltiples líneas */
     overflow: hidden;           /* Oculta el texto que se desborda del contenedor */
