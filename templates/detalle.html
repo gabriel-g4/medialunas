@@ -37,7 +37,14 @@
             <tr>
                 <td> {{ key }} </td>
                 <td> {{ ingredientes[key] }} </td>
-                <td> ${{ precios[key] }} </td>
+                <td> 
+                    <!-- if to prevent id value to have an $ sign -->
+                    {% if ( key == "id") %} 
+                        {{ precios[key] }}
+                    {% else %}
+                        ${{ precios[key] }}
+                    {% endif %}
+                </td>
             </tr>
             {% endfor %}
         </tbody>

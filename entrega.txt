@@ -4,10 +4,10 @@ Aplicación Medialunas
 ### Funcionalidades:
 
 * Manejo información en base de datos:
-	-Editar
-	-Crear log de cada entrega (en archivo)
-	-Agregar hecho.
-	-Eliminar hecho.
+	-Editar /hecho.
+	-Crear log de cada entrega (en archivo) /hecho en db.
+	-Agregar /hecho.
+	-Eliminar /hecho.
 
 * Leer información: Ruta -> /
 	-Filtros
@@ -15,15 +15,13 @@ Aplicación Medialunas
 	-Barra de busqueda
 	-Stock semanal
 	-Apartado freezer, en donde cargar stock, sacarlo y ver su fecha limite.
-	-Leer hecho.
+	-Leer /hecho.
 
 ## Tareas
 
 # Funcionales
 
 Eliminar js de los html.
-
-Opcional: eliminar dato id de la tabla ingredientes/precio en detalle de /medialunas/.
 
 Hacer que en /editar se pongan por defecto los valores del tag selected/option de la base de datos con JS.
 
