@@ -33,7 +33,9 @@ Agregar
             <div>
                 <input type="text" name="ganancia" placeholder="ganancia" required value="{{ medialuna['ganancia'] }}">
             </div>
-            <!-- TO DO -->
+
+            <!-- Select tags -->
+
             <div>
                 <label for="tipo"> Tipo: </label>
                 <select name="tipo" id="tipo" value="{{ medialuna['tipo'] }}">
@@ -41,7 +43,7 @@ Agregar
                     <option value="practica"> Practica </option>
                 </select>
             </div>
-            <!-- TO DO -->
+            
             <div>
                 <label for="masa_madre"> Masa madre: </label>
                 <select name="masa_madre" id="masa_madre" value="{{ medialuna['masa_madre'] }}">
@@ -81,4 +83,11 @@ Agregar
         </div>
 
     </form>
+
+    <!-- If statement to only work on /editar mode -->
+     
+    {% if action != "agregar" %}
+        <script src="../static/agregar.js"></script>
+    {% endif %}
+
 {% endblock %}

@@ -14,8 +14,6 @@
 
 const tableRows = document.querySelectorAll(".main-row");
 
-console.log(tableRows);
-
 tableRows.forEach(tr => {
   tr.addEventListener("click", ()=> {
     window.location.href = tr.getAttribute("data-url");

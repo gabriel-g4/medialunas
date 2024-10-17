@@ -21,9 +21,9 @@ Aplicación Medialunas
 
 # Funcionales
 
-Hacer que en /editar se pongan por defecto los valores del tag selected/option de la base de datos con JS.
-
 Refactor completo a app.py y a archivos html, eliminar hardcoding.
+
+* Preguntar sobre requirimientos en fecha y agregar.
 
 
 # Base de datos
