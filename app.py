@@ -45,8 +45,8 @@ def agregar():
     elif request.method == "POST":
 
         cantidad = request.form.get("cantidad")
-        tiempo_descanso = request.form.get("tiempo_descanso")
-        tiempo_coccion = request.form.get("tiempo_coccion")
+        levado_minutos = request.form.get("levado_minutos")
+        coccion_minutos = request.form.get("coccion_minutos")
         costo_c_una = request.form.get("costo_c_una")
         cantidad_vendida = request.form.get("cantidad_vendida")
         precio_c_una = request.form.get("precio_c_una")
@@ -55,7 +55,7 @@ def agregar():
         masa_madre = request.form.get("masa_madre")
         texto = request.form.get("texto")
 
-        harina = request.form.get("harina")
+        harina_000 = request.form.get("harina_000")
         levadura = request.form.get("levadura")
         azucar = request.form.get("azucar")
         miel = request.form.get("miel")
@@ -77,11 +77,11 @@ def agregar():
         
         with sqlite3.connect(database) as connection:
             cursor = connection.cursor()
-            cursor.execute("INSERT INTO medialunas (cantidad, tiempo_descanso\
-                           , tiempo_coccion, costo_c_una, cantidad_vendida, precio_c_una, \
+            cursor.execute("INSERT INTO medialunas (cantidad, levado_minutos\
+                           , coccion_minutos, costo_c_una, cantidad_vendida, precio_c_una, \
                            ganancia, tipo, creacion, masa_madre, texto, ultima_modificacion) VALUES (?,?,?,?,?,?,?,?, \
                            ? ,?,?,?)",
-                            (cantidad, tiempo_descanso, tiempo_coccion, costo_c_una,
+                            (cantidad, levado_minutos, coccion_minutos, costo_c_una,
                              cantidad_vendida, precio_c_una, ganancia, tipo, datetime.now().strftime("%d-%m-%Y %H:%M:%S") , masa_madre, texto, datetime.now().strftime("%d-%m-%Y %H:%M:%S")))
             
             # Tomar el id de la medialuna insertada en Medialunas.
@@ -91,13 +91,13 @@ def agregar():
 
             # añadir entrada a ingredientes
            
-            cursor.execute("INSERT INTO ingredientes (id, harina, levadura, azucar, miel, sal,\
+            cursor.execute("INSERT INTO ingredientes (id, harina_000, levadura, azucar, miel, sal,\
                            leche, huevos, manteca) VALUES (?,?,?,?,?,?,?,?,?)",
-                           (id, harina, levadura, azucar, miel, sal, leche, huevos, manteca))
+                           (id, harina_000, levadura, azucar, miel, sal, leche, huevos, manteca))
             
             # añadir entrada a precios
 
-            cursor.execute("INSERT INTO precios (id, harina, levadura, azucar, miel, sal,\
+            cursor.execute("INSERT INTO precios (id, harina_000, levadura, azucar, miel, sal,\
                            leche, huevos, manteca) VALUES (?,?,?,?,?,?,?,?,?)",
                            (id, precio_harina, precio_levadura, precio_azucar, precio_miel, 
                             precio_sal, precio_leche, precio_huevos, precio_manteca))
@@ -133,8 +133,8 @@ def editar(id: int):
     elif request.method == "POST":
         
         cantidad = request.form.get("cantidad")
-        tiempo_descanso = request.form.get("tiempo_descanso")
-        tiempo_coccion = request.form.get("tiempo_coccion")
+        levado_minutos = request.form.get("levado_minutos")
+        coccion_minutos = request.form.get("coccion_minutos")
         costo_c_una = request.form.get("costo_c_una")
         cantidad_vendida = request.form.get("cantidad_vendida")
         precio_c_una = request.form.get("precio_c_una")
@@ -143,7 +143,7 @@ def editar(id: int):
         masa_madre = request.form.get("masa_madre")
         texto = request.form.get("texto")
 
-        harina = request.form.get("harina")
+        harina_000 = request.form.get("harina_000")
         levadura = request.form.get("levadura")
         azucar = request.form.get("azucar")
         miel = request.form.get("miel")
@@ -164,22 +164,22 @@ def editar(id: int):
         
         with sqlite3.connect(database) as connection:
             cursor = connection.cursor()
-            cursor.execute("UPDATE medialunas SET cantidad=?, tiempo_descanso=?\
-                           , tiempo_coccion=?, costo_c_una=?, cantidad_vendida=?, precio_c_una=?, \
+            cursor.execute("UPDATE medialunas SET cantidad=?, levado_minutos=?\
+                           , coccion_minutos=?, costo_c_una=?, cantidad_vendida=?, precio_c_una=?, \
                            ganancia=?, tipo=?, ultima_modificacion=?, masa_madre=?, texto=? WHERE id = ?",
-                            (cantidad, tiempo_descanso, tiempo_coccion, costo_c_una,
+                            (cantidad, levado_minutos, coccion_minutos, costo_c_una,
                              cantidad_vendida, precio_c_una, ganancia, tipo, datetime.now().strftime("%d-%m-%Y %H:%M:%S"), masa_madre, texto,
                              str(id)))
             
             # añadir entrada a ingredientes
            
-            cursor.execute("UPDATE ingredientes SET harina=?, levadura=?, azucar=?, miel=?, sal=?,\
+            cursor.execute("UPDATE ingredientes SET harina_000=?, levadura=?, azucar=?, miel=?, sal=?,\
                            leche=?, huevos=?, manteca=? WHERE id = ?",
-                           (harina, levadura, azucar, miel, sal, leche, huevos, manteca, str(id)))
+                           (harina_000, levadura, azucar, miel, sal, leche, huevos, manteca, str(id)))
             
             # añadir entrada a precios
 
-            cursor.execute("UPDATE precios SET harina=?, levadura=?, azucar=?, miel=?, sal=?,\
+            cursor.execute("UPDATE precios SET harina_000=?, levadura=?, azucar=?, miel=?, sal=?,\
                            leche=?, huevos=?, manteca=? WHERE id = ?",
                            (precio_harina, precio_levadura, precio_azucar, precio_miel, precio_sal, precio_leche, precio_huevos, precio_manteca, str(id)))
             

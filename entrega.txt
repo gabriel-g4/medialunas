@@ -23,10 +23,19 @@ Aplicación Medialunas
 
 Refactor completo a app.py y a archivos html, eliminar hardcoding.
 
+Quizas usar javascript para hacer cuentas.
+
 * Preguntar sobre requirimientos en fecha y agregar.
 
 
 # Base de datos
+
+Agregar costo total.
+Costo unidad.
+Ganancia unidad.
+Agregar precio.
+Costos indirectos.
+Tabla ventas?.
 
 Opcional: al finalizar, eliminar la db de práctica y crear un archivo.sql con el schema para poder crearla.
 
