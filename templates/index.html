@@ -9,8 +9,17 @@
     <div class="btn-container">
         <a href="/agregar" class="btn btn-primary btn-lg">Agregar</a>
     </div>
+    <div class="search-bar-section">
+        <label for="search-bar"> Barra de búsqueda </label>
+        <input type="text" id="search-bar">
+        <select name="selected-filter" id="selected-filter">
+            {% for columna in columnas_medialunas %}
+                <option value="{{ columna }}"> {{ columna }} </option>
+            {% endfor %}
+        </select>
+    </div>
     <div class="container table-responsive-sm">
-        <table class="main-table table table-sm table-hover table-bordered border-dark">
+        <table id="main-table" class="main-table table table-sm table-hover table-bordered border-dark">
             <caption> Lista de medialunas </caption>
             <thead class="table-dark">
                 <tr>

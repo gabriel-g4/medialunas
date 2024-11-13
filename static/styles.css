@@ -41,3 +41,13 @@ textarea
     text-overflow: ellipsis;    /* Agrega puntos suspensivos al final del texto truncado */
     max-width: 200px;           /* Ajusta el ancho máximo para truncar el texto según el tamaño que prefieras */
 }
+
+.search-bar-section {
+    display: flex;
+    text-align: left;
+    flex-wrap: wrap;
+}
+
+.search-bar-section label {
+    width: 100%;
+}
