@@ -1,14 +1,23 @@
 body 
 {
-    background-color: #ffffcc !important;
+    background-color: #f3dade !important;
     text-align: center !important;
+    width: 100dvw;
+}
+
+/* #btn-agregar {
+    background-color: #d75e7f;
+    color: #fafafa;
+} */
+
+.custom-color {
+    background-color: #d75e7f !important;
+    color: #fafafa !important;
 }
 
 .btn-container
 {
-    margin-top: 5vh;
-    margin-bottom: 5vh;
-    width: 100%;
+    margin: 2.5dvh 15px;
 }
 
 caption
@@ -18,7 +27,9 @@ caption
 
 h1
 {
-    margin-top: 1rem !important;
+    margin-top: 10dvh !important;
+    margin-bottom: 10dvh !important;
+    font-size: 3rem !important;
 }
 
 textarea
@@ -46,8 +57,47 @@ textarea
     display: flex;
     text-align: left;
     flex-wrap: wrap;
+    margin: 10px 15px;
 }
 
 .search-bar-section label {
     width: 100%;
+}
+
+#selected-filter {
+    color: #fafafa;
+    background-color: #d75e7f;
+}
+
+
+#main-table thead tr td {
+    background-color: #d75e7f;
+    color: #fafafa;
+}
+
+#main-table {
+    margin: 0 15px;
+}
+
+.icon-attribution {
+    margin-top: 2.5dvh;
+}
+.icon-attribution a {
+    color:#d75e7f;
+}
+
+footer {
+    margin-top: 10dvh;
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
+#link-agregar {
+    color:#d75e7f;
+}
+
+.link-title {
+    display: inline;
 }
