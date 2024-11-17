@@ -10,9 +10,10 @@ Aplicación Medialunas
 	-Eliminar /hecho.
 
 * Leer información: Ruta -> /
-	-Filtros
-	-Buscador por columna.
-	-Barra de busqueda
+	-Filtros /hecho
+	-Buscador por columna. /hecho
+	-Barra de busqueda /hecho
+	-Ordenar por:
 	-Stock semanal
 	-Apartado freezer, en donde cargar stock, sacarlo y ver su fecha limite.
 	-Leer /hecho.
@@ -20,6 +21,15 @@ Aplicación Medialunas
 ## Tareas
 
 # Funcionales
+
+Mover masa_madre de tabla medialunas a tabla ingredientes.
+
+Sacar levado_minutos y coccion_minutos de tabla principal.
+
+Agregar opcion en blanco para buscar en todas las columnas.
+
+
+
 
 Refactor completo a app.py y a archivos html, eliminar hardcoding.
 
