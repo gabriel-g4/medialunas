@@ -13,6 +13,7 @@
         <label for="search-bar"> Barra de búsqueda </label>
         <input type="text" id="search-bar">
         <select name="selected-filter" id="selected-filter">
+            <option value="-">-</option>
             {% for columna in columnas_medialunas %}
                 <option value="{{ columna }}"> {{ columna }} </option>
             {% endfor %}
@@ -26,7 +27,7 @@
                     <h6 class="link-title"> (Agregar) </h6> 
                 </a> 
             </caption>
-            <thead class="">
+            <thead>
                 <tr>
                     {% for columna in columnas_medialunas %}
                     <td> {{ columna }} </td>
