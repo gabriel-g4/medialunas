@@ -36,6 +36,7 @@ textarea
 {
     margin-top: 5% !important;
     margin-bottom: 5% !important;
+    resize: none !important;
 }
 
 .main-table tr {
