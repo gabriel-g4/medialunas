@@ -5,11 +5,6 @@ body
     width: 100dvw;
 }
 
-/* #btn-agregar {
-    background-color: #d75e7f;
-    color: #fafafa;
-} */
-
 .custom-color {
     background-color: #d75e7f !important;
     color: #fafafa !important;
