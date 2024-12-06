@@ -1,6 +1,9 @@
 
 // detalle
-/* <a href="/eliminar/{{ medialuna['id'] }}" class="btn btn-danger btn-lg" onclick="return confirm('Eliminar?');">Eliminar</a> */
+
+// Gives the delete button a click event with a confirmation
+// and redirects.
+
 
 const btnDelete = document.getElementById("btn-delete");
 

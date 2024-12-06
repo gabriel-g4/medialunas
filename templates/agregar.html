@@ -9,7 +9,13 @@ Agregar
     <div class="btn-container">
         <a href="/{{ back }}" class="btn btn-secondary btn-lg">Volver</a>
     </div>
+
+    <!-- Agregar principal form -->
+
     <form action="/{{ action }}" class="row" method="post">
+
+        <!-- Medialunas inputs -->
+
         <div class="form-group col-md-4">
             <h6> Medialuna </h6>
             <div>
@@ -34,7 +40,7 @@ Agregar
                 <input type="text" name="ganancia" placeholder="ganancia" required value="{{ medialuna['ganancia'] }}">
             </div>
 
-            <!-- Select tags -->
+            <!-- Medialunas' select tags -->
 
             <div>
                 <label for="tipo"> Tipo: </label>
@@ -54,6 +60,7 @@ Agregar
             </div>
         </div>
 
+        <!-- Ingredientes inputs -->
         
         <div class="form-group col-md-4">
             <h6> Ingredientes </h6>
@@ -63,6 +70,8 @@ Agregar
                 </div>    
             {% endfor %}
         </div>
+
+        <!-- Precios inputs -->
         
         <div class="form-group col-md-4">
             <h6> Precio </h6>
@@ -73,10 +82,13 @@ Agregar
             {% endfor %}
         </div>
         
+        <!-- Text form -->
 
         <div>
             <textarea name="texto" cols="50" rows="5">{{ medialuna['texto'] }}</textarea>
         </div>
+
+        <!-- Submit -->
         
         <div class="col-12">
             <button type="submit" class="custom-color btn btn-lg mb-2">{{ boton }}</button>

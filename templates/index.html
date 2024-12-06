@@ -6,9 +6,7 @@
 
 {% block main %}
     <h1 class="title"> Medialunas </h1>
-    <!-- <div class="btn-container">
-        <a href="/agregar" id="btn-agregar" class="custom-color btn btn-lg">Agregar</a>
-    </div> -->
+    <!-- Search bar -->
     <div class="search-bar-section">
         <label for="search-bar"> Barra de búsqueda </label>
         <input type="text" id="search-bar">
@@ -19,10 +17,12 @@
             {% endfor %}
         </select>
     </div>
+    <!-- Main table -->
     <div class="table-responsive-sm">
         <table id="main-table" class="main-table table table-sm table-hover table-bordered border-dark">
             <caption>
                  Lista de medialunas 
+                 <!-- /agregar link -->
                  <a href="/agregar" id="link-agregar">
                     <h6 class="link-title"> (Agregar) </h6> 
                 </a> 

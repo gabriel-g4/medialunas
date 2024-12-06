@@ -1,7 +1,7 @@
 // Agregar.html on /editar
 
-// Changes select tags by making the db fetched option the default "selected" option
-// for convenience sake 
+// Changes select tags "tipo" and "masa_madre" by making the db 
+// fetched option the default "selected" option for convenience sake 
 
 
 function setSelected(selectId) {
