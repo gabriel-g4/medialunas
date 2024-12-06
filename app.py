@@ -6,6 +6,7 @@ from datetime import datetime
 app = Flask(__name__)
 database = "medialunas.db"
 
+# Get the sql columns' names and make them constant.
 with sqlite3.connect(database) as connection:
     cursor = connection.cursor()
 
@@ -26,6 +27,7 @@ for i in range(len(COLUMNAS_INGREDIENTES_PRECIOS)):
 
 @app.route('/')
 def index():
+    ''' Queries the whole sql table and shows it. '''
     with sqlite3.connect(database) as connection:
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM medialunas ORDER BY id DESC")
@@ -37,7 +39,13 @@ def index():
 
 @app.route('/agregar', methods=["GET", "POST"])
 def agregar():
+    ''' 
+    Add a new item.
 
+    GET: a form to create a new item.
+
+    POST: gets the form values and creates the item in the database.
+    '''
     if request.method == "GET":
         return render_template("agregar.html",
                            columnas_ingredientes_precios=COLUMNAS_INGREDIENTES_PRECIOS[1:], medialuna="", ingredientes="", precios="", titulo="Agregar", boton="Agregar", action="agregar", back="")
@@ -77,6 +85,7 @@ def agregar():
         
         with sqlite3.connect(database) as connection:
             cursor = connection.cursor()
+            #  Insert item into database.
             cursor.execute("INSERT INTO medialunas (cantidad, levado_minutos\
                            , coccion_minutos, costo_c_una, cantidad_vendida, precio_c_una, \
                            ganancia, tipo, creacion, masa_madre, texto, ultima_modificacion) VALUES (?,?,?,?,?,?,?,?, \
@@ -84,18 +93,18 @@ def agregar():
                             (cantidad, levado_minutos, coccion_minutos, costo_c_una,
                              cantidad_vendida, precio_c_una, ganancia, tipo, datetime.now().strftime("%d-%m-%Y %H:%M:%S") , masa_madre, texto, datetime.now().strftime("%d-%m-%Y %H:%M:%S")))
             
-            # Tomar el id de la medialuna insertada en Medialunas.
+            # Gets the id of the created item.
 
             cursor.execute("SELECT id FROM medialunas ORDER BY creacion DESC")
             id = cursor.fetchone()[0]
 
-            # añadir entrada a ingredientes
+            # Adds an entry to ingredientes' table.
            
             cursor.execute("INSERT INTO ingredientes (id, harina_000, levadura, azucar, miel, sal,\
                            leche, huevos, manteca) VALUES (?,?,?,?,?,?,?,?,?)",
                            (id, harina_000, levadura, azucar, miel, sal, leche, huevos, manteca))
             
-            # añadir entrada a precios
+            # Does the same with precios' table.
 
             cursor.execute("INSERT INTO precios (id, harina_000, levadura, azucar, miel, sal,\
                            leche, huevos, manteca) VALUES (?,?,?,?,?,?,?,?,?)",
@@ -107,7 +116,14 @@ def agregar():
 
 @app.route('/editar/<int:id>', methods=["GET", "POST"])
 def editar(id: int):
+    '''
+    Edit an item.
+    :param id: id number of the item to edit.
 
+    GET: Gets the item's values and places them in /agregar form.
+
+    POST: Updates the item's values in the database.
+    '''
     if request.method == "GET":
 
         with sqlite3.connect(database) as connection:
@@ -171,13 +187,13 @@ def editar(id: int):
                              cantidad_vendida, precio_c_una, ganancia, tipo, datetime.now().strftime("%d-%m-%Y %H:%M:%S"), masa_madre, texto,
                              str(id)))
             
-            # añadir entrada a ingredientes
+            # Updates the item on ingredientes' table. 
            
             cursor.execute("UPDATE ingredientes SET harina_000=?, levadura=?, azucar=?, miel=?, sal=?,\
                            leche=?, huevos=?, manteca=? WHERE id = ?",
                            (harina_000, levadura, azucar, miel, sal, leche, huevos, manteca, str(id)))
             
-            # añadir entrada a precios
+            # Updates the item on precios' table. 
 
             cursor.execute("UPDATE precios SET harina_000=?, levadura=?, azucar=?, miel=?, sal=?,\
                            leche=?, huevos=?, manteca=? WHERE id = ?",
@@ -188,6 +204,11 @@ def editar(id: int):
 
 @app.route('/eliminar/<int:id>')
 def eliminar(id: int):
+    '''
+    Deletes an item from all the database tables.
+    :param id: the id number of the item to delete.
+
+    '''
     with sqlite3.connect(database) as connection:
         cursor = connection.cursor()
         cursor.execute("DELETE FROM medialunas WHERE id = ?", (int(id),))
@@ -199,6 +220,11 @@ def eliminar(id: int):
 
 @app.route('/detalle/<int:id>')
 def mostrar_detalle(id: int):
+    '''
+    Shows all detailed info on an specific item.
+    :param id: the id number of the item to show all the information.
+
+    '''
     with sqlite3.connect(database) as connection:
         cursor = connection.cursor()
         
