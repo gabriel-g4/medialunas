@@ -38,18 +38,13 @@
         </thead>
         <tbody>
             {% for key in ingredientes %}
-            <tr>
-                <td> {{ key }} </td>
-                <td> {{ ingredientes[key] }} </td>
-                <td> 
-                    <!-- if to prevent id value to have an $ sign -->
-                    {% if ( key == "id") %} 
-                        {{ precios[key] }}
-                    {% else %}
-                        ${{ precios[key] }}
-                    {% endif %}
-                </td>
-            </tr>
+                {% if (key != "id") %}
+                <tr>
+                    <td> {{ key }} </td>
+                    <td> {{ ingredientes[key] }} </td>
+                    <td> ${{ precios[key] }} </td>
+                </tr>
+                {% endif %}
             {% endfor %}
         </tbody>
     </table>
