@@ -17,29 +17,30 @@ The main purpose is to archive information of her production in a database, quic
 **Technologies used**: Python, Flask, Jinja2, HTML, CSS, Bootstrap, Javascript, Git
 
 * ### /
-    <hr>
+
     The index page. It fetches the database's 'medialunas' table and shows all tuples in a main table. If you click on one of its rows, it will send you to _/detalle/:id_.
     You can add an entry to the database clicking the **(Agregar)** button just above the main table. It will send you to _/agregar_.
 
     It has a "dynamic" search bar that operates in conjuction with a select option. By default, this select option is empty. So, if you type in the search input, it will do a general search of the value in all the database table's columns and modify the main table only showing matching rows. You can also search by specific column, selecting its correspondent option.
 
 * ### /agregar
-    <hr>
+  
     A form that lets you insert into the database. It has an HTML validation on all the necessary inputs. When you click 'Guardar', it saves the values and redirects you to the index _/_.
 
 * ### /detalle/:id
-    <hr>
+
     Shows all the detailed information for the item with the  _:id_ value. The information is displayed in two separate tables, and in the top of the page you have a button to edit (goes to _/editar/:id_) and other to delete (goes to _/eliminar/:id_) this item. Deleting requires a confirmation.
 
 * ### /editar/:id
-    <hr>
+
     It renders the same form as _/agregar_, but this time the form's inputs are populated by the values of the item specified with the _:id_. You can change the current values and save it, and it will update the item in the database and redirect you to index _/_.
 
 * ### /eliminar/:id
-    <hr>
+
     Deletes the item with the specified _:id_ from the database.
-    >[!CAUTION]
-    >Visiting the link this way deletes instantly and doesn't require confirmation. It's intended to be used from _/editar/:id_.
+  
+>[!CAUTION]
+>Visiting the link this way deletes instantly and doesn't require confirmation. It's intended to be used from _/editar/:id_.
 
 ## Special thanks to
 
