@@ -40,7 +40,10 @@ searchBar.addEventListener('keyup', (e) => {
     for (let i = 1; i < length; i++) {
       
       let col = rows[i].cells;
-      
+
+      // In this case, (when there's a search in an specific column) I don't need to
+      // go through all the values stored in the row, because I have the filter index stored.
+
       if (!col[filterIndex].innerHTML.toLowerCase().includes(barValue)) {
         mainTable.rows[i].style.display = "none";
       } else {
