@@ -72,7 +72,7 @@ def agregar():
         huevos = request.form.get("huevos")
         manteca = request.form.get("manteca")
 
-        precio_harina = request.form.get("precio_harina")
+        precio_harina = request.form.get("precio_harina_000")
         precio_levadura = request.form.get("precio_levadura")
         precio_azucar = request.form.get("precio_azucar")
         precio_miel = request.form.get("precio_miel")
@@ -85,17 +85,19 @@ def agregar():
         
         with sqlite3.connect(database) as connection:
             cursor = connection.cursor()
+            fecha_actual = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+                           
             #  Insert item into database.
             cursor.execute("INSERT INTO medialunas (cantidad, levado_minutos\
                            , coccion_minutos, costo_c_una, cantidad_vendida, precio_c_una, \
                            ganancia, tipo, creacion, masa_madre, texto, ultima_modificacion) VALUES (?,?,?,?,?,?,?,?, \
                            ? ,?,?,?)",
                             (cantidad, levado_minutos, coccion_minutos, costo_c_una,
-                             cantidad_vendida, precio_c_una, ganancia, tipo, datetime.now().strftime("%d-%m-%Y %H:%M:%S") , masa_madre, texto, datetime.now().strftime("%d-%m-%Y %H:%M:%S")))
+                             cantidad_vendida, precio_c_una, ganancia, tipo, fecha_actual, masa_madre, texto, fecha_actual))
             
             # Gets the id of the created item.
 
-            cursor.execute("SELECT id FROM medialunas ORDER BY creacion DESC")
+            cursor.execute("SELECT id FROM medialunas WHERE creacion = ?", (fecha_actual,))
             id = cursor.fetchone()[0]
 
             # Adds an entry to ingredientes' table.
@@ -168,7 +170,7 @@ def editar(id: int):
         huevos = request.form.get("huevos")
         manteca = request.form.get("manteca")
 
-        precio_harina = request.form.get("precio_harina")
+        precio_harina = request.form.get("precio_harina_000")
         precio_levadura = request.form.get("precio_levadura")
         precio_azucar = request.form.get("precio_azucar")
         precio_miel = request.form.get("precio_miel")
