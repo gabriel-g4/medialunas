@@ -2,7 +2,7 @@
 
 Hi! My name is **Gabriel García**, I am from **Buenos Aires, Argentina**, and this is my CS50x final project: **_Medialunas_**.
 
-* Video demo: http://www.youtube.com
+* Video demo: [here](https://youtu.be/QGPKzUTrugc)
 * Edx username: **gabriel_g4**
 * GitHub username: **gabriel-g4**
 
